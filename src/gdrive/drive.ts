@@ -6,6 +6,7 @@ import { createFolder } from './create-folder';
 import { getAuthClient } from './get-auth';
 import { listAll } from './list-all';
 import { deprecateFile } from './deprecate-file';
+import { undeprecateFile } from './undeprecate-file';
 
 export class Drive {
   private client?: OAuth2Client;
@@ -28,5 +29,9 @@ export class Drive {
 
   deprecate(file: Partial<drive_v3.Schema$File>) {
     return deprecateFile(this.client, file);
+  }
+
+  undeprecate(file: Partial<drive_v3.Schema$File>) {
+    return undeprecateFile(this.client, file);
   }
 }
